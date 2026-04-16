@@ -1,1 +1,936 @@
+<!DOCTYPE html>
 
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>K's Office | Fukuoka Property Assessment for Overseas Buyers</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1814;
+    --paper: #f5f0e8;
+    --cream: #ede8dc;
+    --gold: #b8975a;
+    --gold-light: #d4b87a;
+    --muted: #5a5550;
+    --line: rgba(26,24,20,0.12);
+  }
+
+- { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+body {
+background: var(–paper);
+color: var(–ink);
+font-family: ‘DM Sans’, sans-serif;
+font-weight: 500;
+line-height: 1.75;
+overflow-x: hidden;
+}
+
+/* NAV */
+nav {
+position: fixed;
+top: 0; left: 0; right: 0;
+z-index: 100;
+padding: 1.2rem 4rem;
+display: flex;
+justify-content: space-between;
+align-items: center;
+background: rgba(245,240,232,0.94);
+backdrop-filter: blur(12px);
+border-bottom: 1px solid var(–line);
+}
+.nav-logo {
+font-family: ‘Cormorant Garamond’, serif;
+font-size: 1.35rem;
+font-weight: 700;
+letter-spacing: 0.06em;
+color: var(–ink);
+text-decoration: none;
+}
+.nav-cta {
+font-size: 0.8rem;
+font-weight: 600;
+letter-spacing: 0.12em;
+text-transform: uppercase;
+color: var(–gold);
+text-decoration: none;
+border-bottom: 1px solid var(–gold);
+padding-bottom: 2px;
+transition: opacity 0.2s;
+}
+.nav-cta:hover { opacity: 0.7; }
+
+/* HERO */
+.hero {
+min-height: 100vh;
+display: flex;
+align-items: center;
+padding: 10rem 4rem 6rem;
+position: relative;
+overflow: hidden;
+}
+.hero::before {
+content: ‘’;
+position: absolute;
+top: -20%; right: -10%;
+width: 60vw; height: 60vw;
+border-radius: 50%;
+background: radial-gradient(circle, rgba(184,151,90,0.07) 0%, transparent 70%);
+pointer-events: none;
+}
+.hero-tag {
+font-size: 0.74rem;
+font-weight: 600;
+letter-spacing: 0.18em;
+text-transform: uppercase;
+color: var(–gold);
+margin-bottom: 2rem;
+display: flex;
+align-items: center;
+gap: 0.8rem;
+}
+.hero-tag::before {
+content: ‘’;
+display: block;
+width: 2rem; height: 1px;
+background: var(–gold);
+}
+.hero-headline {
+font-family: ‘Cormorant Garamond’, serif;
+font-size: clamp(2.8rem, 5vw, 4.8rem);
+font-weight: 600;
+line-height: 1.12;
+letter-spacing: -0.01em;
+max-width: 720px;
+margin-bottom: 1.8rem;
+}
+.hero-headline em {
+font-style: italic;
+font-weight: 400;
+color: var(–gold);
+}
+.hero-data {
+font-size: 0.88rem;
+font-weight: 500;
+color: var(–muted);
+margin-bottom: 2.5rem;
+max-width: 480px;
+line-height: 1.7;
+padding-left: 1rem;
+border-left: 2px solid var(–gold);
+}
+.hero-data strong { color: var(–ink); font-weight: 600; }
+.hero-sub {
+font-size: 1.08rem;
+font-weight: 500;
+color: var(–muted);
+max-width: 480px;
+margin-bottom: 3rem;
+line-height: 1.8;
+}
+.btn-primary {
+display: inline-block;
+background: var(–ink);
+color: var(–paper);
+font-family: ‘DM Sans’, sans-serif;
+font-size: 0.8rem;
+font-weight: 600;
+letter-spacing: 0.14em;
+text-transform: uppercase;
+text-decoration: none;
+padding: 1.1rem 2.8rem;
+transition: background 0.25s, color 0.25s;
+}
+.btn-primary:hover { background: var(–gold); color: var(–paper); }
+.hero-disclaimer {
+margin-top: 1.2rem;
+font-size: 0.78rem;
+font-weight: 500;
+color: var(–muted);
+letter-spacing: 0.04em;
+}
+
+/* DIVIDER */
+.divider { height: 1px; background: var(–line); margin: 0 4rem; }
+
+/* SECTIONS */
+section {
+padding: 7rem 4rem;
+max-width: 1100px;
+margin: 0 auto;
+}
+.section-label {
+font-size: 0.7rem;
+font-weight: 600;
+letter-spacing: 0.2em;
+text-transform: uppercase;
+color: var(–gold);
+margin-bottom: 2.5rem;
+display: flex;
+align-items: center;
+gap: 0.8rem;
+}
+.section-label::before {
+content: ‘’;
+display: block;
+width: 1.5rem; height: 1px;
+background: var(–gold);
+}
+.section-heading {
+font-family: ‘Cormorant Garamond’, serif;
+font-size: clamp(2rem, 3.5vw, 3rem);
+font-weight: 600;
+line-height: 1.22;
+margin-bottom: 2rem;
+max-width: 680px;
+}
+.section-body {
+font-size: 1rem;
+font-weight: 500;
+color: var(–muted);
+max-width: 580px;
+line-height: 1.9;
+}
+
+/* WHY */
+.why-grid {
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 4rem;
+align-items: start;
+}
+
+/* WHAT WE DO */
+.services-list { list-style: none; margin-top: 2.5rem; }
+.services-list li {
+padding: 1.5rem 0;
+border-top: 1px solid var(–line);
+display: flex;
+gap: 2rem;
+align-items: flex-start;
+font-size: 0.98rem;
+font-weight: 500;
+color: var(–muted);
+line-height: 1.7;
+}
+.services-list li:last-child { border-bottom: 1px solid var(–line); }
+.services-list .num {
+font-family: ‘Cormorant Garamond’, serif;
+font-size: 1.15rem;
+font-weight: 600;
+color: var(–gold);
+min-width: 2rem;
+padding-top: 0.05rem;
+}
+
+/* FOR / NOT FOR */
+.fit-grid {
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 3rem;
+margin-top: 3rem;
+}
+.fit-card { padding: 2.5rem; background: var(–cream); }
+.fit-card h3 {
+font-family: ‘Cormorant Garamond’, serif;
+font-size: 1.35rem;
+font-weight: 600;
+margin-bottom: 1.5rem;
+padding-bottom: 1rem;
+border-bottom: 1px solid var(–line);
+}
+.fit-list { list-style: none; display: grid; gap: 0.9rem; }
+.fit-list li {
+font-size: 0.92rem;
+font-weight: 500;
+color: var(–muted);
+display: flex;
+gap: 0.8rem;
+align-items: flex-start;
+line-height: 1.6;
+}
+.fit-list .check { color: var(–gold); font-size: 0.9rem; min-width: 1rem; }
+.fit-list .cross { color: var(–muted); opacity: 0.45; font-size: 0.9rem; min-width: 1rem; }
+
+/* ASSESSMENT */
+.assessment-box {
+background: var(–ink);
+color: var(–paper);
+padding: 4rem;
+margin-top: 3rem;
+position: relative;
+overflow: hidden;
+}
+.assessment-box::after {
+content: ‘¥’;
+position: absolute;
+right: 3rem; top: 50%;
+transform: translateY(-50%);
+font-family: ‘Cormorant Garamond’, serif;
+font-size: 12rem;
+color: rgba(255,255,255,0.03);
+line-height: 1;
+pointer-events: none;
+}
+.assessment-price {
+font-family: ‘Cormorant Garamond’, serif;
+font-size: 3rem;
+font-weight: 600;
+color: var(–gold-light);
+margin-bottom: 0.3rem;
+}
+.assessment-price span {
+font-size: 1rem;
+font-weight: 400;
+color: rgba(245,240,232,0.5);
+font-family: ‘DM Sans’, sans-serif;
+margin-left: 0.5rem;
+}
+.assessment-name {
+font-size: 0.74rem;
+font-weight: 600;
+letter-spacing: 0.18em;
+text-transform: uppercase;
+color: rgba(245,240,232,0.5);
+margin-bottom: 1rem;
+}
+.assessment-clarify {
+font-size: 0.9rem;
+font-weight: 400;
+color: rgba(245,240,232,0.65);
+font-style: italic;
+margin-bottom: 2.5rem;
+max-width: 560px;
+line-height: 1.6;
+}
+.assessment-cols {
+display: grid;
+grid-template-columns: 1fr 1fr 1fr;
+gap: 2.5rem;
+margin-bottom: 3rem;
+}
+.assessment-col h4 {
+font-size: 0.7rem;
+font-weight: 600;
+letter-spacing: 0.15em;
+text-transform: uppercase;
+color: var(–gold-light);
+margin-bottom: 1rem;
+}
+.assessment-col ul { list-style: none; display: grid; gap: 0.55rem; }
+.assessment-col ul li {
+font-size: 0.88rem;
+font-weight: 400;
+color: rgba(245,240,232,0.75);
+display: flex;
+gap: 0.6rem;
+line-height: 1.5;
+}
+.assessment-col ul li::before {
+content: ‘-’;
+color: var(–gold-light);
+opacity: 0.55;
+flex-shrink: 0;
+}
+.btn-light {
+display: inline-block;
+background: var(–paper);
+color: var(–ink);
+font-family: ‘DM Sans’, sans-serif;
+font-size: 0.8rem;
+font-weight: 600;
+letter-spacing: 0.14em;
+text-transform: uppercase;
+text-decoration: none;
+padding: 1.1rem 2.8rem;
+transition: background 0.25s, color 0.25s;
+}
+.btn-light:hover { background: var(–gold); color: var(–paper); }
+
+/* DIFFERENT */
+.different-quote {
+font-family: ‘Cormorant Garamond’, serif;
+font-size: clamp(1.5rem, 2.8vw, 2.2rem);
+font-style: italic;
+font-weight: 400;
+line-height: 1.5;
+color: var(–ink);
+max-width: 700px;
+margin: 2.5rem 0;
+padding-left: 2rem;
+border-left: 2px solid var(–gold);
+}
+
+/* UPPER SERVICES - compressed */
+.upper-grid {
+display: grid;
+grid-template-columns: repeat(3, 1fr);
+gap: 1px;
+background: var(–line);
+margin-top: 3rem;
+border: 1px solid var(–line);
+}
+.upper-card { background: var(–paper); padding: 2rem 2rem; }
+.upper-card .step {
+font-family: ‘Cormorant Garamond’, serif;
+font-size: 2rem;
+font-weight: 400;
+color: var(–gold);
+opacity: 0.35;
+line-height: 1;
+margin-bottom: 0.8rem;
+}
+.upper-card h3 {
+font-family: ‘Cormorant Garamond’, serif;
+font-size: 1.15rem;
+font-weight: 600;
+margin-bottom: 0.4rem;
+}
+.upper-card .price-tag {
+font-size: 0.74rem;
+font-weight: 500;
+color: var(–muted);
+letter-spacing: 0.08em;
+margin-bottom: 0.8rem;
+opacity: 0.7;
+}
+.upper-card p {
+font-size: 0.86rem;
+font-weight: 500;
+color: var(–muted);
+line-height: 1.65;
+}
+.upper-note {
+font-size: 0.8rem;
+font-weight: 500;
+color: var(–muted);
+font-style: italic;
+margin-top: 1.2rem;
+line-height: 1.6;
+}
+
+/* ADVISOR */
+.advisor-grid {
+display: grid;
+grid-template-columns: 260px 1fr;
+gap: 5rem;
+align-items: start;
+margin-top: 3rem;
+}
+.advisor-photo {
+width: 100%;
+aspect-ratio: 3/4;
+background: var(–cream);
+display: flex;
+align-items: center;
+justify-content: center;
+}
+.advisor-photo-placeholder { text-align: center; color: var(–muted); }
+.advisor-photo-placeholder .icon { font-size: 3.5rem; margin-bottom: 0.5rem; opacity: 0.25; }
+.advisor-photo-placeholder p {
+font-size: 0.7rem;
+font-weight: 500;
+letter-spacing: 0.1em;
+text-transform: uppercase;
+opacity: 0.35;
+}
+.advisor-name {
+font-family: ‘Cormorant Garamond’, serif;
+font-size: 2.2rem;
+font-weight: 600;
+margin-bottom: 0.3rem;
+}
+.advisor-title {
+font-size: 0.76rem;
+font-weight: 600;
+letter-spacing: 0.14em;
+text-transform: uppercase;
+color: var(–gold);
+margin-bottom: 2rem;
+}
+.advisor-body {
+font-size: 0.97rem;
+font-weight: 500;
+color: var(–muted);
+line-height: 1.9;
+max-width: 520px;
+}
+.advisor-body p + p { margin-top: 1.2rem; }
+.advisor-independent {
+margin-top: 2rem;
+padding: 1.5rem;
+background: var(–cream);
+border-left: 2px solid var(–gold);
+font-size: 0.88rem;
+font-weight: 500;
+color: var(–muted);
+line-height: 1.7;
+}
+.advisor-credentials { margin-top: 1.8rem; display: grid; gap: 0.8rem; }
+.credential {
+display: flex;
+gap: 1rem;
+align-items: flex-start;
+font-size: 0.86rem;
+font-weight: 500;
+color: var(–muted);
+}
+.credential::before {
+content: ‘’;
+width: 4px; height: 4px;
+background: var(–gold);
+border-radius: 50%;
+margin-top: 0.6rem;
+flex-shrink: 0;
+}
+
+/* EXAMPLE */
+.example-box {
+background: var(–cream);
+padding: 3.5rem 4rem;
+margin-top: 3rem;
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 4rem;
+align-items: center;
+}
+.example-tag {
+font-size: 0.7rem;
+font-weight: 600;
+letter-spacing: 0.16em;
+text-transform: uppercase;
+color: var(–muted);
+margin-bottom: 1rem;
+}
+.example-name {
+font-family: ‘Cormorant Garamond’, serif;
+font-size: 1.8rem;
+font-weight: 600;
+margin-bottom: 1.5rem;
+}
+.example-specs { list-style: none; display: grid; gap: 0.6rem; margin-bottom: 1.5rem; }
+.example-specs li {
+font-size: 0.86rem;
+font-weight: 500;
+color: var(–muted);
+display: flex;
+gap: 0.8rem;
+}
+.example-specs li::before { content: ‘-’; color: var(–gold); opacity: 0.7; }
+.example-note {
+font-size: 0.82rem;
+font-weight: 500;
+color: var(–muted);
+font-style: italic;
+line-height: 1.65;
+padding-top: 1.5rem;
+border-top: 1px solid var(–line);
+}
+.example-right {
+font-size: 0.95rem;
+font-weight: 500;
+color: var(–muted);
+line-height: 1.9;
+}
+
+/* CONTACT */
+.contact-wrap { text-align: center; max-width: 640px; margin: 0 auto; }
+.contact-wrap .section-label { justify-content: center; }
+.contact-wrap .section-label::before { display: none; }
+.contact-wrap .section-heading { max-width: 100%; margin: 0 auto 2rem; }
+.contact-wrap .section-body { max-width: 100%; margin: 0 auto 3rem; }
+.contact-email {
+font-size: 0.8rem;
+font-weight: 500;
+color: var(–muted);
+margin-top: 1.5rem;
+}
+.contact-email a {
+color: var(–gold);
+text-decoration: none;
+border-bottom: 1px solid var(–gold);
+padding-bottom: 1px;
+font-weight: 500;
+}
+
+/* LANGUAGE NOTE */
+.language-note {
+max-width: 1100px;
+margin: 0 auto;
+padding: 2rem 4rem 3rem;
+border-top: 1px solid var(–line);
+}
+.language-note h4 {
+font-size: 0.7rem;
+font-weight: 600;
+letter-spacing: 0.16em;
+text-transform: uppercase;
+color: var(–gold);
+margin-bottom: 0.7rem;
+}
+.language-note p {
+font-size: 0.82rem;
+font-weight: 500;
+color: var(–muted);
+line-height: 1.7;
+max-width: 680px;
+}
+
+/* FOOTER */
+footer {
+padding: 2.5rem 4rem;
+border-top: 1px solid var(–line);
+display: flex;
+justify-content: space-between;
+align-items: center;
+font-size: 0.74rem;
+font-weight: 500;
+color: var(–muted);
+letter-spacing: 0.06em;
+}
+
+/* FADE IN */
+.fade-in {
+opacity: 0;
+transform: translateY(20px);
+transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.fade-in.visible { opacity: 1; transform: none; }
+
+@media (max-width: 768px) {
+nav { padding: 1rem 1.5rem; }
+.hero { padding: 8rem 1.5rem 4rem; }
+section { padding: 5rem 1.5rem; }
+.why-grid, .fit-grid, .assessment-cols,
+.upper-grid, .advisor-grid, .example-box { grid-template-columns: 1fr; gap: 2rem; }
+.assessment-box { padding: 2.5rem 2rem; }
+.language-note { padding: 2rem 1.5rem; }
+footer { flex-direction: column; gap: 1rem; text-align: center; padding: 2rem 1.5rem; }
+.divider { margin: 0 1.5rem; }
+}
+</style>
+
+</head>
+<body>
+
+<!-- NAV -->
+
+<nav>
+  <a href="#" class="nav-logo">K's Office</a>
+  <a href="#assessment" class="nav-cta">Start Your Assessment</a>
+</nav>
+
+<!-- HERO -->
+
+<div class="hero">
+  <div>
+    <div class="hero-tag">Fukuoka Property Assessment</div>
+    <h1 class="hero-headline">
+      Before you buy in Fukuoka,<br>get <em>clear</em>.
+    </h1>
+    <div class="hero-data">
+      <strong>87.5%</strong> of Chinese-speaking investors say now is the right time to buy Japanese real estate — but which area fits your goals, and how do you know the advice is truly for you?
+      <br><small style="opacity:0.65; font-size:0.78em;">Source: GA technologies survey, February 2024. Respondents: Chinese-speaking investors from mainland China, Taiwan, and Hong Kong.</small>
+    </div>
+    <p class="hero-sub">
+      Independent property assessment for overseas buyers considering Fukuoka.<br>
+      No sales pitch. No commission pressure.
+    </p>
+    <a href="#assessment" class="btn-primary">Start Your Assessment</a>
+    <p class="hero-disclaimer">¥19,800 · Delivered within 5 business days · No call required</p>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- WHY -->
+
+<section class="fade-in">
+  <div class="why-grid">
+    <div>
+      <div class="section-label">Why This Exists</div>
+      <h2 class="section-heading">Buying in Japan from overseas can feel unclear.</h2>
+    </div>
+    <div class="section-body" style="margin-top:3.5rem;">
+      <p>Which area fits your goals? What kind of property actually matches your budget and priorities?</p>
+      <br>
+      <p>And how do you know whether the advice you receive is truly for you — or simply part of a sales process?</p>
+      <br>
+      <p>K's Office was created to help overseas buyers make better decisions about property in Fukuoka and nearby areas <em>before</em> they commit to anything.</p>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- WHAT WE DO -->
+
+<section class="fade-in">
+  <div class="section-label">What We Do</div>
+  <h2 class="section-heading">We organize the judgment you need before moving forward.</h2>
+  <ul class="services-list">
+    <li><span class="num">01</span> Review your goals, budget, and timeline to understand what you actually need</li>
+    <li><span class="num">02</span> Identify suitable areas and property types — and unsuitable ones, clearly</li>
+    <li><span class="num">03</span> Share local knowledge that does not appear in listings or online research</li>
+    <li><span class="num">04</span> Highlight priority points to verify before making any further commitment</li>
+    <li><span class="num">05</span> Suggest the next practical step based on your specific situation</li>
+    <li><span class="num">06</span> Connect you to transaction support only when you are ready and request it</li>
+  </ul>
+</section>
+
+<div class="divider"></div>
+
+<!-- FOR / NOT FOR -->
+
+<section class="fade-in">
+  <div class="section-label">Who This Is For</div>
+  <h2 class="section-heading">Built for overseas buyers who want clarity first.</h2>
+  <div class="fit-grid">
+    <div class="fit-card">
+      <h3>This is for you if —</h3>
+      <ul class="fit-list">
+        <li><span class="check">✓</span> You are seriously considering a property decision in Fukuoka or nearby areas</li>
+        <li><span class="check">✓</span> You want an independent second opinion before deciding</li>
+        <li><span class="check">✓</span> You are tired of agents who only want to close a deal</li>
+        <li><span class="check">✓</span> You need someone who knows the local market honestly</li>
+        <li><span class="check">✓</span> You have no one to consult about property in Japan</li>
+      </ul>
+    </div>
+    <div class="fit-card">
+      <h3>This is not for you if —</h3>
+      <ul class="fit-list">
+        <li><span class="cross">×</span> You are casually browsing with no clear intention</li>
+        <li><span class="cross">×</span> You are looking for guaranteed investment returns</li>
+        <li><span class="cross">×</span> You expect free open-ended consulting</li>
+        <li><span class="cross">×</span> You do not see value in building trust before a major decision</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ASSESSMENT -->
+
+<section id="assessment" class="fade-in">
+  <div class="section-label">Start Here</div>
+  <h2 class="section-heading">The first step is the assessment.</h2>
+  <div class="assessment-box">
+    <div class="assessment-price">¥19,800 <span>JPY (approx. USD 130)</span></div>
+    <div class="assessment-name">Fukuoka Property Assessment</div>
+    <div class="assessment-clarify">
+      This is not to tell you what to buy immediately.<br>
+      This is to help you clarify what to review, what to avoid, and what to verify first.
+    </div>
+    <div class="assessment-cols">
+      <div class="assessment-col">
+        <h4>You Tell Us</h4>
+        <ul>
+          <li>Your budget range</li>
+          <li>Your purchase purpose</li>
+          <li>Your timeline</li>
+          <li>Your priorities</li>
+          <li>Property type you consider</li>
+          <li>Areas you are interested in</li>
+          <li>How you found this service</li>
+          <li>Any other concerns</li>
+        </ul>
+      </div>
+      <div class="assessment-col">
+        <h4>We Return</h4>
+        <ul>
+          <li>Current assessment summary</li>
+          <li>Suitable areas and types</li>
+          <li>Unsuitable areas and types</li>
+          <li>Local caution points</li>
+          <li>3–5 priority checks</li>
+          <li>Clear next-step recommendation</li>
+        </ul>
+      </div>
+      <div class="assessment-col">
+        <h4>How It Works</h4>
+        <ul>
+          <li>Starts with a hearing sheet</li>
+          <li>Delivered in report format</li>
+          <li>Email / messaging only</li>
+          <li>No real-time meeting</li>
+          <li>Within 5 business days</li>
+        </ul>
+      </div>
+    </div>
+    <a href="mailto:jdi.k.hiratsuka@outlook.jp" class="btn-light">Request Your Assessment</a>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- DIFFERENT -->
+
+<section class="fade-in">
+  <div class="section-label">What Makes This Different</div>
+  <h2 class="section-heading">Not a portal. Not a brokerage pitch.</h2>
+  <blockquote class="different-quote">
+    "This is not about selling you a property.<br>
+    This is about helping you make a better decision first."
+  </blockquote>
+  <p class="section-body">
+    Most overseas property services are built around commission. K's Office is built around independent judgment.<br><br>
+    Using local knowledge and a Fukuoka-based network, we help overseas buyers understand what they are actually considering — before they commit to anything.<br><br>
+    When transaction support is needed, it can be arranged through our professional base. But the starting point is always clarity first.
+  </p>
+</section>
+
+<div class="divider"></div>
+
+<!-- UPPER SERVICES - compressed -->
+
+<section class="fade-in">
+  <div class="section-label">Further Support</div>
+  <h2 class="section-heading">When your search becomes more specific.</h2>
+  <p class="section-body" style="margin-bottom:0;">The assessment is the starting point. Further support can be arranged if needed.</p>
+  <div class="upper-grid">
+    <div class="upper-card">
+      <div class="step">01</div>
+      <h3>Property Assessment</h3>
+      <div class="price-tag">¥19,800 — Entry step</div>
+      <p>Direction, area fit, and what to review next. The right starting point.</p>
+    </div>
+    <div class="upper-card">
+      <div class="step">02</div>
+      <h3>Individual Property Review</h3>
+      <div class="price-tag">¥49,800 — When a property is specific</div>
+      <p>Strengths, concerns, and an honest recommendation for properties you are already considering.</p>
+    </div>
+    <div class="upper-card">
+      <div class="step">03</div>
+      <h3>On-Site Report &amp; Connections</h3>
+      <div class="price-tag">Quoted individually</div>
+      <p>On-site visits, specialist connections, and transaction support when you are ready to move forward.</p>
+    </div>
+  </div>
+  <p class="upper-note">
+    If you move to deeper support, fees from previous steps are taken into account so overlapping cost stays reasonable.
+  </p>
+</section>
+
+<div class="divider"></div>
+
+<!-- EXAMPLE -->
+
+<section class="fade-in">
+  <div class="section-label">Example Case</div>
+  <h2 class="section-heading">We also work on rare, high-end properties.</h2>
+  <div class="example-box">
+    <div>
+      <div class="example-tag">High-End · Rare Property</div>
+      <div class="example-name">Atmos Momochi<br><small style="font-size:0.65em; color:var(--muted); font-weight:400;">Momochihama, Fukuoka — ¥400,000,000</small></div>
+      <ul class="example-specs">
+        <li>Top floor, 24-storey building</li>
+        <li>Approx. 65㎡ rooftop balcony</li>
+        <li>Traditional Japanese tea room</li>
+        <li>Ocean view · Only 3 units on the floor</li>
+      </ul>
+      <div class="example-note">
+        When the right buyer is ready, we are ready.
+      </div>
+    </div>
+    <div class="example-right">
+      <p>This is one example of how K's Office approaches a high-end property — structurally, honestly, and without a sales agenda.</p>
+      <br>
+      <p>Who it suits, who it does not, what to verify. The same approach applies at every price point.</p>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ADVISOR -->
+
+<section class="fade-in">
+  <div class="section-label">About the Advisor</div>
+  <h2 class="section-heading">Led by a local professional. Based in Fukuoka.</h2>
+  <div class="advisor-grid">
+    <div>
+      <div class="advisor-photo">
+        <div class="advisor-photo-placeholder">
+          <div class="icon">☻</div>
+          <p>Photo here</p>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="advisor-name">Kazuhiro Hiratsuka</div>
+      <div class="advisor-title">Sales Director &amp; Agent · Re:Partners Co., Ltd. · Fukuoka</div>
+      <div class="advisor-body">
+        <p>K's Office is independently operated by Kazuhiro Hiratsuka, based in Fukuoka, Japan.</p>
+        <p>K's Office is not the product of Re:Partners Co., Ltd. itself. It is a separate service, built around independent judgment first — not commission, not a sales funnel.</p>
+        <p>Kazuhiro also works as Sales Director and Agent with Re:Partners Co., Ltd., a licensed real estate company. When practical transaction support becomes necessary, it can be connected through that professional base — but only when the client requests it.</p>
+      </div>
+      <div class="advisor-independent">
+        K's Office starts from independent assessment.<br>
+        Re:Partners provides the professional infrastructure when needed.<br>
+        The two work together — but judgment always comes first.
+      </div>
+      <div class="advisor-credentials">
+        <div class="credential">Based in Fukuoka — local knowledge, local network</div>
+        <div class="credential">Agent &amp; Sales Director, Re:Partners Co., Ltd. (licensed real estate company)</div>
+        <div class="credential">Works with local specialists: legal, tax, management, interpretation</div>
+        <div class="credential">Independent assessment service — not a listing portal or brokerage funnel</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- CONTACT -->
+
+<section class="fade-in">
+  <div class="contact-wrap">
+    <div class="section-label">Get Started</div>
+    <h2 class="section-heading">Start with the first step.</h2>
+    <p class="section-body">
+      If you are considering property in Fukuoka or nearby areas, send us your budget, purpose, timeline, and priorities.<br><br>
+      We will ask you to complete a short hearing sheet, then return a clear initial assessment within 5 business days.
+    </p>
+    <a href="mailto:jdi.k.hiratsuka@outlook.jp" class="btn-primary">Request Your Assessment — ¥19,800</a>
+    <p class="contact-email">
+      Prefer to ask a question first?<br>
+      <a href="mailto:jdi.k.hiratsuka@outlook.jp">jdi.k.hiratsuka@outlook.jp</a>
+    </p>
+  </div>
+</section>
+
+<!-- LANGUAGE NOTE -->
+
+<div class="language-note">
+  <h4>Language Note</h4>
+  <p>Some parts of our communication may be supported by AI translation so that we can respond more quickly across languages. If your case moves to a more specific stage and accurate interpretation becomes important, professional interpreter support can be arranged when needed.</p>
+</div>
+
+<!-- FOOTER -->
+
+<footer>
+  <span>K's Office · Fukuoka, Japan · Independently operated by Kazuhiro Hiratsuka</span>
+  <span>Assessment and judgment support. Transaction support on request only.</span>
+</footer>
+
+<script>
+  const fadeEls = document.querySelectorAll('.fade-in');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.08 });
+  fadeEls.forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
